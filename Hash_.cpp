@@ -1,7 +1,5 @@
-﻿#include <windows.h>
-#pragma comment(lib, "advapi32")
+﻿#include "windows.h"
 #include "iostream"
-#include "wincrypt.h"
 #include "WinCryptEx.h"
 
 #define GR3411LEN  64
@@ -36,7 +34,7 @@ int main()
 
 	cout << "Hash created" << endl;
 
-	// Тестовые данные для хеширования
+	// Входные данные для хеширования
 	char string[] = "Hello crypto world";
 	DWORD count = strlen(string);
 
@@ -71,7 +69,7 @@ int main()
 	}
 	cout << "\n\n";
 
-	// Освобождение
+	// Освобождение памяти
 	CryptDestroyHash(hHash);
 	CryptReleaseContext(hProv, 0);
 

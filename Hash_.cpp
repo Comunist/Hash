@@ -1,6 +1,7 @@
 ﻿#include "windows.h"
 #include "iostream"
 #include "WinCryptEx.h"
+#include "string"
 
 #define GR3411LEN  64
 
@@ -33,15 +34,19 @@ int main()
 	}
 
 	cout << "Hash created" << endl;
-
+	cout << "Input Data: ";
 	// Входные данные для хеширования
-	char string[] = "Hello crypto world";
-	DWORD count = strlen(string);
+	string some;
+	getline(cin, some);
+	char* str = (char*)some.c_str();
 
-	cout << "Get Input Data: " << string << endl;
+	//char str[] = "Hello crypto world";
+	DWORD count = strlen(str);
+
+	cout << "Got Input Data: " << str << endl;
 
 	// Передача хешируемых данных хэш-объекту.
-	if (!CryptHashData(hHash, (BYTE*)string, count, 0))
+	if (!CryptHashData(hHash, (BYTE*)str, count, 0))
 	{
 		CryptReleaseContext(hProv, 0);
 		CryptDestroyHash(hHash);

@@ -2,6 +2,8 @@
 #include "iostream"
 #include "WinCryptEx.h"
 #include "string"
+#include <cstdio>
+
 
 #define GR3411LEN  64
 
@@ -36,11 +38,9 @@ int main()
 	cout << "Hash created" << endl;
 	cout << "Input Data: ";
 	// Входные данные для хеширования
-	string some;
-	getline(cin, some);
-	char* str = (char*)some.c_str();
+	char str[32];
+	gets_s(str);
 
-	//char str[] = "Hello crypto world";
 	DWORD count = strlen(str);
 
 	cout << "Got Input Data: " << str << endl;
